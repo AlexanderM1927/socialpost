@@ -75497,6 +75497,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('home', __webpack_require__(/*! ./components/home.vue */ "./resources/js/components/home.vue")["default"]);
 
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
+var app = new Vue({
+  el: '#v-app'
+});
 
 /***/ }),
 
