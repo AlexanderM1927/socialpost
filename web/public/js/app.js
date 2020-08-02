@@ -19654,7 +19654,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-app",
     [
       _c("navbar"),
       _vm._v(" "),
@@ -19666,7 +19666,7 @@ var render = function() {
             [
               _c(
                 "v-col",
-                { attrs: { cols: "12", sm: "12", md: "12", xs: "4" } },
+                { attrs: { cols: "12", sm: "12", md: "12", xs: "12" } },
                 [
                   _c(
                     "v-card",
@@ -19854,7 +19854,7 @@ var render = function() {
         [
           _c("v-app-bar-nav-icon"),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v("Page title")]),
+          _c("v-toolbar-title", [_vm._v("Social post")]),
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
@@ -75854,7 +75854,8 @@ Vue.component('login-registro', __webpack_require__(/*! ./components/login-regis
 
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
 var app = new Vue({
-  el: '#v-app'
+  el: '#v-app',
+  vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_0___default.a()
 });
 
 /***/ }),
