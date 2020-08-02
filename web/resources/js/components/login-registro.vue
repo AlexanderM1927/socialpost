@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <v-alert type="success">
-      I'm a success alert.
-    </v-alert>
+  <v-app>
+    <v-form >
+      <v-text-field ref="form" label="Usaername">
+      </v-text-field>
 
-    <v-alert type="info">
-      I'm an info alert.
-    </v-alert>
+      <v-text-field ref="form" label="Password">
+      </v-text-field>
 
-    <v-alert type="warning">
-      I'm a warning alert.
-    </v-alert>
+      <v-btn color="primary">SIGN IN</v-btn>
 
-    <v-alert type="error">
-      I'm an error alert.
-    </v-alert>
-  </div>
+    </v-form>
+    
+  </v-app>
 </template>
 
 <script>

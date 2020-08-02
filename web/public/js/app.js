@@ -1998,10 +1998,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /***/ }),
 
@@ -19802,23 +19798,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-app",
     [
-      _c("v-alert", { attrs: { type: "success" } }, [
-        _vm._v("\n    I'm a success alert.\n  ")
-      ]),
-      _vm._v(" "),
-      _c("v-alert", { attrs: { type: "info" } }, [
-        _vm._v("\n    I'm an info alert.\n  ")
-      ]),
-      _vm._v(" "),
-      _c("v-alert", { attrs: { type: "warning" } }, [
-        _vm._v("\n    I'm a warning alert.\n  ")
-      ]),
-      _vm._v(" "),
-      _c("v-alert", { attrs: { type: "error" } }, [
-        _vm._v("\n    I'm an error alert.\n  ")
-      ])
+      _c(
+        "v-form",
+        [
+          _c("v-text-field", { ref: "form", attrs: { label: "Usaername" } }),
+          _vm._v(" "),
+          _c("v-text-field", { ref: "form", attrs: { label: "Password" } }),
+          _vm._v(" "),
+          _c("v-btn", { attrs: { color: "primary" } }, [_vm._v("SIGN IN")])
+        ],
+        1
+      )
     ],
     1
   )
@@ -75854,7 +75846,8 @@ Vue.component('login-registro', __webpack_require__(/*! ./components/login-regis
 
 Vue.use(vuetify__WEBPACK_IMPORTED_MODULE_0___default.a);
 var app = new Vue({
-  el: '#v-app'
+  el: '#v-app',
+  vuetify: new vuetify__WEBPACK_IMPORTED_MODULE_0___default.a()
 });
 
 /***/ }),
