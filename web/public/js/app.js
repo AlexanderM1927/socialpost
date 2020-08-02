@@ -19650,7 +19650,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "v-app",
     [
       _c("navbar"),
       _vm._v(" "),
@@ -19662,7 +19662,7 @@ var render = function() {
             [
               _c(
                 "v-col",
-                { attrs: { cols: "12", sm: "12", md: "12", xs: "4" } },
+                { attrs: { cols: "12", sm: "12", md: "12", xs: "12" } },
                 [
                   _c(
                     "v-card",
@@ -19846,7 +19846,7 @@ var render = function() {
         [
           _c("v-app-bar-nav-icon"),
           _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v("Page title")]),
+          _c("v-toolbar-title", [_vm._v("Social post")]),
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
@@ -76096,8 +76096,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\mauri\Documents\GitHub\social\socialpost\web\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\mauri\Documents\GitHub\social\socialpost\web\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\asus\Downloads\NeonProject\socialpost\web\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\asus\Downloads\NeonProject\socialpost\web\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

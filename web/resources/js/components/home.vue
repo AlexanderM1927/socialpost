@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<v-app>
 		<navbar></navbar>
 		<v-container>
 			<v-row>
@@ -7,7 +7,7 @@
 					cols="12"
 					sm="12"
 					md="12"
-					xs="4"
+					xs="12"
 				>
 					<v-card class="mx-auto" color="#26c6da" dark max-width="400">
 						<v-card-title>
@@ -50,7 +50,7 @@
 				</v-col>
 			</v-row>
 		</v-container>
-	</div>
+	</v-app>
 </template>
 <script>
 import navbar from './navbar.vue'
