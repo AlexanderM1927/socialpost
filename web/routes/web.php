@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'login-registro')->name('login-registro');
+Route::view('/', 'login')->name('login-registro');
 
 Route::get('/home', function () {
     return view('home');

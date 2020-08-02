@@ -13,7 +13,10 @@
     </head>
     <body>
 	    <div id="v-app">
-	      <login-registro></login-registro>
+            <v-app>
+            
+                <login></login>
+                	      
 	   	</div>
 	   	<script src="{{ mix('js/app.js') }}"></script>
     </body>
