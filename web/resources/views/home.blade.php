@@ -1,13 +1,9 @@
-<html>
-<head>
-<link rel="stylesheet" href="{{ mix('css/app.css') }}" />
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
-</head>
-<body>
-   <div id="v-app">
-      <home></home>
-   </div>
-   <script src="{{ mix('js/app.js') }}"></script>
-</body>
-</html>
+@extends('layout')
+
+@section('title', 'Home')
+
+    
+@section('content')
+    <home></home>
+@endsection
+  

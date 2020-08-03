@@ -47,14 +47,10 @@ export default {
   },
   methods:{
     abrir () {
-      location.href="/home"
+      location.href="/registro"
     },
     
   }
   
 }
 </script>
-<style>
-
-
-</style>
