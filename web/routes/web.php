@@ -20,3 +20,5 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::post('/register', 'UserController@register');
+Route::post('/login', 'UserController@login');

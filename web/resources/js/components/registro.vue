@@ -8,28 +8,32 @@
                         <v-toolbar flat color="purple darken-2 white--text ">
                             <h1>SIGN UP</h1>
                         </v-toolbar>
-                        <v-form class="white px-5 py-6">
+                        <v-form @submit="guardar" class="white px-5 py-6">
                             <v-text-field 
+                                v-model="user.username"
                                 prepend-inner-icon="mdi-account-box purple lighten-1" 
                                 ref="form" 
                                 label="Username">
                             </v-text-field>
                             <v-text-field 
+                                v-model="user.email"
                                 prepend-inner-icon="mdi-mail purple lighten-1" 
                                 ref="form" 
                                 label="Email">
                             </v-text-field>
                             <v-text-field 
+                                v-model="user.password"
                                 prepend-inner-icon="mdi-key purple lighten-1" 
                                 ref="form" 
                                 label="Password">
                             </v-text-field>
                             <v-text-field 
+                                v-model="user.cpassword"
                                 prepend-inner-icon="mdi-key purple lighten-1" 
                                 ref="form" 
                                 label="Confirm-Password">
                             </v-text-field>
-                            <v-btn block color="purple lighten-1 white--text">SUBMIT</v-btn>
+                            <v-btn @click="guardar" block color="purple lighten-1 white--text">SUBMIT</v-btn>
                         </v-form>
                     </v-card>  
                 </v-flex>
@@ -42,14 +46,21 @@
 export default {
   data () {
     return {
+        user: {}
     }
   },
   methods:{
     abrir () {
       location.href="/home"
     },
-    
+    async guardar () {
+        try {
+            const p = await axios.post('register', this.user)
+            console.log(p)
+        } catch (error) {
+            console.log(error)
+        }
+    }
   }
-  
 }
 </script>

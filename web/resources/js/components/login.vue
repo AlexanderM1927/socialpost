@@ -21,11 +21,11 @@
                 </template>
               </v-toolbar>
               <v-form class="white px-5 py-6">
-                  <v-text-field prepend-inner-icon="mdi-account-box purple lighten-1" ref="form" label="Username">
+                  <v-text-field v-model="user.email" prepend-inner-icon="mdi-account-box purple lighten-1" ref="form" label="Email">
                   </v-text-field>
-                  <v-text-field prepend-inner-icon="mdi-key purple lighten-1" ref="form" label="Password">
+                  <v-text-field v-model="user.password" prepend-inner-icon="mdi-key purple lighten-1" ref="form" label="Password">
                   </v-text-field>
-                  <v-btn block color="purple lighten-1 white--text">SIGN IN</v-btn>
+                  <v-btn @click="login" block color="purple lighten-1 white--text">SIGN IN</v-btn>
               </v-form>
               <v-footer class=" white center--text">
                 <v-spacer></v-spacer>
@@ -43,14 +43,20 @@
 export default {
   data () {
     return {
+        user: {}
     }
   },
   methods:{
     abrir () {
-      location.href="/registro"
+      location.href="/home"
     },
-    
+    async login () {
+        try {
+            const p = await axios.post('login', this.user)
+        } catch (error) {
+            console.log(error)
+        }
+    }
   }
-  
 }
 </script>
