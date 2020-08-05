@@ -47,12 +47,12 @@ export default {
     }
   },
   methods:{
-    abrir () {
-      location.href="/home"
-    },
     async login () {
         try {
             const p = await axios.post('login', this.user)
+            if (p.data.auth) {
+              location.href="/home"
+            }
         } catch (error) {
             console.log(error)
         }

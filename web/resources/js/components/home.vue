@@ -14,7 +14,7 @@
 						<v-icon large left>
 							mdi-twitter
 						</v-icon>
-						<span class="title font-weight-light">Twitter</span>
+						<span class="title font-weight-light">{{user.name}}</span>
 						</v-card-title>
 
 						<v-card-text class="headline font-weight-bold">
@@ -55,12 +55,31 @@
 <script>
 import navbar from './navbar.vue'
 export default {
-	components: {
-    navbar
-  },
   data () {
     return {
-	}
+        user: {}
+    }
+  },
+  components: {
+	  navbar
+  },
+  mounted() {
+	  this.getUser()
+  },
+  methods:{
+    async getUser () {
+        try {
+            const p = await axios.get('getuser')
+            if (p.data.auth) {
+				this.user = p.data.user
+				console.log(this.user)
+			} else {
+				location.href="/"
+			}
+        } catch (error) {
+            console.log(error)
+        }
+    }
   }
 }
 </script>

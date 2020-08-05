@@ -14,7 +14,7 @@ class UserController extends Controller
             $user = User::create([
                 'name' => $request->input('username'),
                 'email' => $request->input('email'),
-                'password' => $request->input('password')
+                'password' => bcrypt($request->input('password'))
             ]);
             $res = array("msj" => "Registrado correctamente");
         } catch (Exception $e) {
@@ -26,11 +26,26 @@ class UserController extends Controller
 
     public function login(Request $request) {
         $credenciales = $request->only('email','password');
-        if (Auth::validate($credenciales)) {
+        if (Auth::attempt($credenciales)) {
             $res = array("auth" => true);
         } else {
             $res = array("auth" => false);
         }
+        return json_encode($res);
+    }
+
+    public function getUser(Request $request) {
+        if (Auth::check()) {
+            $res = array("auth" => true, "user" => Auth::user());
+        } else {
+            $res = array("auth" => false);
+        }
+        return json_encode($res);
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $res = array("logout" => true);
         return json_encode($res);
     }
 

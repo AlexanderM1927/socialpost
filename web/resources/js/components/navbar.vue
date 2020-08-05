@@ -5,7 +5,7 @@
       dense
       dark
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="logout"></v-app-bar-nav-icon>
 
       <v-toolbar-title>Social post</v-toolbar-title>
 
@@ -46,3 +46,28 @@
     </v-app-bar>
   </div>
 </template>
+<script>
+import navbar from './navbar.vue'
+export default {
+  data () {
+    return {
+        user: {}
+    }
+  },
+  components: {
+	  navbar
+  },
+  methods:{
+    async logout () {
+        try {
+            const p = await axios.post('logout')
+            if (p.data.logout) {
+              location.href="/"
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+  }
+}
+</script>
