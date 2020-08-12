@@ -56,7 +56,7 @@ export default {
       .then((res) =>{
           const r = res;
           if(r.data.auth){
-            location.href="/home"
+            location.href="/showPosts"
           }else{
             alert('unregistered user')
           }

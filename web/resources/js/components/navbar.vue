@@ -15,7 +15,8 @@
         </v-btn>
         			
 				<v-btn v-else text color="grey" @click="logout">
-          <span>LogOut</span>
+          <span>{{user}}</span>
+          <span>|LogOut</span>
           <v-icon>mdi-exit-to-app</v-icon>
         </v-btn>
         
@@ -72,7 +73,11 @@ export default {
   },
   computed:{
     user(){
-      return user.content;
+      if(user.content=="Vacio"){
+        return user.content;
+      }else{
+        return JSON.parse(user.content).name;
+      }
     }
   },
   methods:{

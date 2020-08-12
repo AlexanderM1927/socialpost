@@ -2011,7 +2011,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   var r = res;
 
                   if (r.data.auth) {
-                    location.href = "/home";
+                    location.href = "/showPosts";
                   } else {
                     alert('unregistered user');
                   }
@@ -2113,6 +2113,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _user = document.head.querySelector('meta[name="user"]');
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2140,7 +2141,11 @@ var _user = document.head.querySelector('meta[name="user"]');
   },
   computed: {
     user: function user() {
-      return _user.content;
+      if (_user.content == "Vacio") {
+        return _user.content;
+      } else {
+        return JSON.parse(_user.content).name;
+      }
     }
   },
   methods: {
@@ -2318,7 +2323,7 @@ var _user = document.head.querySelector('meta[name="user"]');
               case 0:
                 axios.put("/posts/".concat(post.id), post).then(function (response) {
                   alert('Post updeated succesfully');
-                  location.href = "/showMyPosts";
+                  location.href = "/showPosts";
                 })["catch"](function (error) {
                   alert('error');
                 });
@@ -2343,7 +2348,7 @@ var _user = document.head.querySelector('meta[name="user"]');
                 if (confirmation) {
                   axios["delete"]("/posts/".concat(post.id)).then(function (response) {
                     alert('Post deleted succesfully');
-                    location.href = "/showMyPosts";
+                    location.href = "/showPosts";
                   })["catch"](function (error) {
                     alert('error');
                   });
@@ -2499,7 +2504,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                   if (r.data.auth) {
                     alert('registration completed');
-                    location.href = "/home";
+                    location.href = "/showPosts";
                   }
 
                   if (r.data == "passdontmatch") {
@@ -39075,7 +39080,9 @@ var render = function() {
                   on: { click: _vm.logout }
                 },
                 [
-                  _c("span", [_vm._v("LogOut")]),
+                  _c("span", [_vm._v(_vm._s(_vm.user))]),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("|LogOut")]),
                   _vm._v(" "),
                   _c("v-icon", [_vm._v("mdi-exit-to-app")])
                 ],
@@ -39104,7 +39111,7 @@ var render = function() {
             { attrs: { nav: "" } },
             [
               _c("v-subheader", { staticClass: "white--text" }, [
-                _vm._v("Options")
+                _vm._v("Menu")
               ]),
               _vm._v(" "),
               _vm.user != "Vacio"
