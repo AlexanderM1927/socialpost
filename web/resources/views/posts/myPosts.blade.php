@@ -1,8 +1,8 @@
 @extends('layout')
 
-@section('title', 'Login')
+@section('title', 'My Posts')
     
 @section('content')
     
-    <login></login>
+    <myposts></myposts>
 @endsection

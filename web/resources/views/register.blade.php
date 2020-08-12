@@ -1,8 +1,8 @@
 @extends('layout')
 
-@section('title', 'Login')
+@section('title', 'Register')
     
 @section('content')
     
-    <login></login>
+    <register></register>
 @endsection

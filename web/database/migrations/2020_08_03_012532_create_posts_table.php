@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePublicationsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreatePublicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('publications', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string("contenido");
+            $table->string("author");
+            $table->text("content");
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
@@ -29,6 +30,6 @@ class CreatePublicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('publications');
+        Schema::dropIfExists('posts');
     }
 }

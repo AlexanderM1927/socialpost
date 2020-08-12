@@ -1,73 +1,93 @@
-<template>
-  <div>
-    <v-app-bar
-      color="deep-purple accent-4"
-      dense
-      dark
-    >
-      <v-app-bar-nav-icon @click="logout"></v-app-bar-nav-icon>
+<template> 
+    <nav>
+      <v-toolbar flat class="grey lighten-4">
+        <v-app-bar-nav-icon class="grey--text" @click="drawer = !drawer">
+        </v-app-bar-nav-icon>
+        <v-toolbar-title class="text-uppercase grey--text">
+          <span class="font-weight-light">Social</span>
+          <span>Test</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+                
+				<v-btn v-if="user=='Vacio'" @click="LogIn" text color="grey">
+          <span>LogIn</span>
+          <v-icon>mdi-account-arrow-left</v-icon>
+        </v-btn>
+        			
+				<v-btn v-else text color="grey" @click="logout">
+          <span>LogOut</span>
+          <v-icon>mdi-exit-to-app</v-icon>
+        </v-btn>
+        
+      </v-toolbar>
+      <v-navigation-drawer app v-model="drawer" class="blue-grey darken-2">
+        <v-list nav>
+          <v-subheader class="white--text">Options</v-subheader>
 
-      <v-toolbar-title>Social post</v-toolbar-title>
+          <v-list-item-group v-if="user!='Vacio'">
+            <v-list-item  v-for="link in links" :key="link.text" @click="toRoute(link.route)">
+              <v-list-item-icon>
+                <v-icon class="white--text">{{link.icon}}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title class="white--text">
+                  {{link.text}}
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group> 
 
-      <v-spacer></v-spacer>
+          <v-list-item-group v-else>
+            <v-list-item @click="toRoute('home')">
+              <v-list-item-icon>
+                <v-icon class="white--text">mdi-home</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title class="white--text">
+                  Home
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
 
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-menu
-        left
-        bottom
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item
-            v-for="n in 5"
-            :key="n"
-            @click="() => {}"
-          >
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
         </v-list>
-      </v-menu>
-    </v-app-bar>
-  </div>
+      </v-navigation-drawer>
+      
+    </nav>
+    
 </template>
 <script>
-import navbar from './navbar.vue'
+let user= document.head.querySelector('meta[name="user"]');
 export default {
-  data () {
-    return {
-        user: {}
+  data(){
+    return{
+      drawer:false,
+      links:[
+        {icon:'mdi-home', text:'Home', route:'/home'},
+        {icon:'mdi-card-text-outline', text:'Posts', route:'/showPosts'},
+        {icon:'mdi-badge-account-horizontal-outline', text:'My Posts', route:'/showMyPosts'},
+        {icon:'mdi-file-document-edit-outline', text:'Create Post', route:'/createPost'}
+      ]
     }
   },
-  components: {
-	  navbar
+  computed:{
+    user(){
+      return user.content;
+    }
   },
   methods:{
-    async logout () {
-        try {
-            const p = await axios.post('logout')
-            if (p.data.logout) {
-              location.href="/"
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    LogIn(){
+      location.href="/login"
+    },
+    logout(){
+      axios.post('logout').then((result) => {
+      location.href="/home"
+      })     
+    },
+    toRoute(route){
+      location.href=route;
+    },
   }
+  
 }
 </script>

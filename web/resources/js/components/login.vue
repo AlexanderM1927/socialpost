@@ -1,14 +1,15 @@
 <template>
-  <v-app class="purple lighten-4">
+  <v-app class="grey lighten-2">
       <v-container>
         <v-layout row justify-center>
-          <v-flex xs11 sm5 md5 >
+          <v-flex xs11 sm8 md7 >
             <v-card tile >
-              <v-toolbar flat color="purple darken-2 white--text ">
+              <v-toolbar flat dark color="#385F73">
                 <h1>SIGN IN</h1>
                 <template >
                   <v-btn
-                    color="purple lighten-1 white--text"
+                    @click="registerIndex"
+                    color="blue-grey white--text"
                     dark
                     small
                     absolute
@@ -21,17 +22,20 @@
                 </template>
               </v-toolbar>
               <v-form class="white px-5 py-6">
-                  <v-text-field v-model="user.email" prepend-inner-icon="mdi-account-box purple lighten-1" ref="form" label="Email">
+                  <v-text-field 
+                  v-model="user.email" 
+                  prepend-inner-icon="mdi-account-box blue-grey--text lighten-1" 
+                  ref="form" 
+                  label="Email"
+                  >
                   </v-text-field>
-                  <v-text-field v-model="user.password" prepend-inner-icon="mdi-key purple lighten-1" ref="form" label="Password">
+                  <v-text-field v-model="user.password" 
+                  prepend-inner-icon="mdi-key blue-grey--text lighten-1" 
+                  ref="form" label="Password"
+                  type="password">
                   </v-text-field>
-                  <v-btn @click="login" block color="purple lighten-1 white--text">SIGN IN</v-btn>
+                  <v-btn @click="login" block color="blue-grey white--text">SIGN IN</v-btn>
               </v-form>
-              <v-footer class=" white center--text">
-                <v-spacer></v-spacer>
-                <a class="grey--text" href="">Forgot your Password?</a>
-                <v-spacer></v-spacer>
-              </v-footer>
             </v-card>   
           </v-flex>
         </v-layout>
@@ -48,14 +52,18 @@ export default {
   },
   methods:{
     async login () {
-        try {
-            const p = await axios.post('login', this.user)
-            if (p.data.auth) {
-              location.href="/home"
-            }
-        } catch (error) {
-            console.log(error)
-        }
+      await axios.post('/login', this.user)
+      .then((res) =>{
+          const r = res;
+          if(r.data.auth){
+            location.href="/home"
+          }else{
+            alert('unregistered user')
+          }
+        })        
+    },
+    async registerIndex(){
+         location.href="/register"
     }
   }
 }
