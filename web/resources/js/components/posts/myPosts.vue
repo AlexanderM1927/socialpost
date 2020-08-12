@@ -50,7 +50,7 @@ export default({
             axios.put(`/posts/${post.id}`, post)
             .then(function(response){
                 alert('Post updeated succesfully');
-                location.href="/showMyPosts";
+                location.href="/showPosts";
             })
             .catch(function(error){
                 alert('error')
@@ -63,7 +63,7 @@ export default({
                 axios.delete(`/posts/${post.id}`)
                 .then(function(response){
                   alert('Post deleted succesfully');
-                  location.href="/showMyPosts";
+                  location.href="/showPosts";
                 })
                 .catch(function(error){
                   alert('error')

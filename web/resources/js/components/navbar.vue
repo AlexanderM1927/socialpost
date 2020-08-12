@@ -22,7 +22,7 @@
       </v-toolbar>
       <v-navigation-drawer app v-model="drawer" class="blue-grey darken-2">
         <v-list nav>
-          <v-subheader class="white--text">Options</v-subheader>
+          <v-subheader class="white--text">Menu</v-subheader>
 
           <v-list-item-group v-if="user!='Vacio'">
             <v-list-item  v-for="link in links" :key="link.text" @click="toRoute(link.route)">

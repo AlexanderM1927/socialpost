@@ -59,7 +59,7 @@ export default {
           const r = res;
           if(r.data.auth){
               alert('registration completed')
-              location.href="/home"
+              location.href="/showPosts"
           }
           if(r.data=="passdontmatch"){
               alert('passwords do not match')
